@@ -132,9 +132,15 @@ $month_options = get_month_options();
                         </a>
                     </li>
                     <li>
-                        <a href="../fliese-des-monats.php" target="_blank">
+                        <a href="#" onclick="showPreview(); return false;">
                             <i class="fas fa-eye icon"></i>
                             Vorschau
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../fliese-des-monats.php" target="_blank">
+                            <i class="fas fa-globe icon"></i>
+                            Live-Seite
                         </a>
                     </li>
                     <li>
@@ -167,7 +173,7 @@ $month_options = get_month_options();
             <?php endif; ?>
             
             <!-- Bearbeitungsformular -->
-            <form method="post" action="" enctype="multipart/form-data">
+            <form method="post" action="" enctype="multipart/form-data" id="edit-form">
                 <!-- Allgemeine Informationen -->
                 <div class="card mb-4">
                     <div class="card-header">
@@ -370,6 +376,7 @@ $month_options = get_month_options();
                                 <textarea id="detailed_description" name="detailed_description" class="form-control form-textarea" rows="8"><?php echo htmlspecialchars(implode("\n\n", $tile_data['detailed_description'])); ?></textarea>
                                 <span class="form-hint">Für jeden neuen Absatz bitte eine Leerzeile einfügen.</span>
                             </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -391,6 +398,10 @@ $month_options = get_month_options();
                                 <i class="fas fa-times btn-icon"></i>
                                 Abbrechen
                             </a>
+                            <button type="button" class="btn btn-outline-primary btn-lg" onclick="showPreview()">
+                                <i class="fas fa-eye btn-icon"></i>
+                                Vorschau anzeigen
+                            </button>
                             <button type="submit" class="btn btn-primary btn-lg">
                                 <i class="fas fa-save btn-icon"></i>
                                 Änderungen speichern
@@ -662,37 +673,28 @@ $month_options = get_month_options();
                 if (files.length > 0) {
                     detailImagesInput.files = files;
                     
-                    // Galerie leeren
                     detailImagesGallery.innerHTML = '';
                     
-                    // Maximale Anzahl von Bildern (3)
                     const maxImages = 3;
                     const filesArray = Array.from(files).slice(0, maxImages);
-                    
-                    // Für jede Datei eine Vorschau erstellen
                     filesArray.forEach((file, index) => {
                         const reader = new FileReader();
                         reader.onload = function(e) {
-                            // Neue Galerie-Element erstellen
                             const galleryItem = document.createElement('div');
                             galleryItem.className = 'image-gallery-item';
                             
-                            // Bild erstellen
                             const img = document.createElement('img');
                             img.src = e.target.result;
                             img.alt = 'Neues Detailbild ' + (index + 1);
                             
-                            // Aktionen-Container
                             const actionsDiv = document.createElement('div');
                             actionsDiv.className = 'image-gallery-actions';
                             
-                            // Löschen-Button (nur visuell)
                             const removeAction = document.createElement('span');
                             removeAction.className = 'image-action';
                             removeAction.title = 'Entfernen';
                             removeAction.innerHTML = '<i class="fas fa-trash"></i>';
                             
-                            // Löschen-Button-Event (nur visuell)
                             removeAction.addEventListener('click', function() {
                                 galleryItem.style.opacity = '0.3';
                                 galleryItem.style.filter = 'grayscale(100%)';
@@ -714,7 +716,6 @@ $month_options = get_month_options();
                                 galleryItem.appendChild(hint);
                             });
                             
-                            // Elemente zusammenfügen
                             actionsDiv.appendChild(removeAction);
                             galleryItem.appendChild(img);
                             galleryItem.appendChild(actionsDiv);
@@ -727,7 +728,6 @@ $month_options = get_month_options();
             });
         }
         
-        // Entfernen-Buttons für vorhandene Bilder (nur visuell)
         const removeButtons = document.querySelectorAll('.image-action');
         if (removeButtons.length > 0) {
             removeButtons.forEach(button => {
@@ -737,7 +737,6 @@ $month_options = get_month_options();
                         galleryItem.style.opacity = '0.3';
                         galleryItem.style.filter = 'grayscale(100%)';
                         
-                        // Hinweis hinzufügen
                         const hint = document.createElement('div');
                         hint.style.position = 'absolute';
                         hint.style.top = '0';
@@ -758,7 +757,6 @@ $month_options = get_month_options();
             });
         }
         
-        // Erfolgsmeldung automatisch ausblenden
         const successAlert = document.querySelector('.alert-success');
         if (successAlert) {
             setTimeout(function() {
@@ -774,6 +772,48 @@ $month_options = get_month_options();
             }, 5000);
         }
     });
+    
+    function showPreview() {
+        const formData = new FormData();
+        
+        formData.append('month', document.getElementById('month').value);
+        formData.append('title', document.getElementById('title').value);
+        formData.append('description', document.getElementById('description').value);
+        formData.append('format', document.getElementById('format').value);
+        formData.append('material', document.getElementById('material').value);
+        formData.append('look', document.getElementById('look').value);
+        formData.append('surface', document.getElementById('surface').value);
+        formData.append('properties', document.getElementById('properties').value);
+        formData.append('usage', document.getElementById('usage').value);
+        formData.append('floor_heating', document.getElementById('floor_heating').value);
+        formData.append('availability', document.getElementById('availability').value);
+        formData.append('features', document.getElementById('features').value);
+        formData.append('old_price', document.getElementById('old_price').value);
+        formData.append('new_price', document.getElementById('new_price').value);
+        formData.append('saving', document.getElementById('saving').value);
+        formData.append('detailed_description', document.getElementById('detailed_description').value);
+        
+        formData.append('current_main_image', '<?php echo htmlspecialchars($tile_data['main_image']); ?>');
+        formData.append('current_detail_images', '<?php echo implode(',', $tile_data['detail_images']); ?>');
+        
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'preview.php';
+        form.target = '_blank';
+        form.style.display = 'none';
+        
+        for (let [key, value] of formData.entries()) {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = value;
+            form.appendChild(input);
+        }
+        
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+    }
     </script>
 </body>
-</html>
+</html>2
