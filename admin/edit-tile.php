@@ -97,6 +97,7 @@ $month_options = get_month_options();
     <title>Fliese des Monats bearbeiten</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/admin-style.css">
+    <link rel="icon" href="assets/img/fliesenrunnebaum_favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div class="admin-layout">
