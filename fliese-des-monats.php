@@ -135,7 +135,7 @@ if (empty($tile_data)) {
                         
                         <div class="tile-cta">
                             <a href="kontakt.html" class="btn">Unverbindlich anfragen</a>
-                            <a href="tel:+4954921245" class="btn btn-secondary">05492 / 12345</a>
+                            <a href="tel:+17610432567" class="btn btn-secondary">0176 / 10432567</a>
                         </div>
                     </div>
                 </div>
@@ -161,8 +161,8 @@ if (empty($tile_data)) {
             <div class="footer-content">
                 <div class="footer-info">
                     <h3>Fliesen Runnebaum</h3>
-                    <p>Musterstraße 123<br>49439 Steinfeld</p>
-                    <p>Telefon: 05492 / 12345<br>E-Mail: info@fliesen-runnebaum.de</p>
+                    <p>Rouen Kamp 1<br>49439 Steinfeld</p>
+                    <p>Telefon: 0176 / 10432567<br>E-Mail: info@fliesen-runnebaum.net</p>
                 </div>
                 <div class="footer-nav">
                     <h3>Navigation</h3>

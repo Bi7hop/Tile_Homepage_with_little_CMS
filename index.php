@@ -277,8 +277,8 @@ if (empty($tile_data)) {
             <div class="footer-content">
                 <div class="footer-info">
                     <h3>Fliesen Runnebaum</h3>
-                    <p>Musterstraße 123<br>49439 Steinfeld</p>
-                    <p>Telefon: 05492 / 12345<br>E-Mail: info@fliesen-runnebaum.de</p>
+                    <p>Rouen Kamp 1<br>49439 Steinfeld</p>
+                    <p>Telefon: 0176 / 10432567<br>E-Mail: info@fliesen-runnebaum.net</p>
                 </div>
                 <div class="footer-nav">
                     <h3>Navigation</h3>
