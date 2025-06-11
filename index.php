@@ -119,6 +119,8 @@
     <script src="assets/js/main.js" defer></script>
     <script src="assets/js/cookie.js" defer></script>
     <script src="assets/js/preloader.js" defer></script>
+    <script src="assets/js/lager-banner.js" defer></script>
+
 </head>
 <body>
     <div class="preloader">
