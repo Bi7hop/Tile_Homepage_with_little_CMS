@@ -60,14 +60,14 @@ if (empty($tile_data)) {
     <header class="header">
         <div class="container">
             <nav class="navbar">
-                <a href="index.html" class="logo">Fliesen Runnebaum</a>
+                <a href="index.php" class="logo">Fliesen Runnebaum</a>
                 <button class="menu-toggle" aria-label="Menü öffnen">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
                 <ul class="nav-menu">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Start</a></li>
+                    <li class="nav-item"><a href="index.php" class="nav-link">Start</a></li>
                     <li class="nav-item"><a href="leistungen.html" class="nav-link">Leistungen</a></li>
                     <li class="nav-item"><a href="galerie.html" class="nav-link">Galerie</a></li>
                     <li class="nav-item"><a href="kontakt.html" class="nav-link">Kontakt</a></li>
@@ -167,7 +167,7 @@ if (empty($tile_data)) {
                 <div class="footer-nav">
                     <h3>Navigation</h3>
                     <ul>
-                        <li><a href="index.html">Start</a></li>
+                        <li><a href="index.php">Start</a></li>
                         <li><a href="leistungen.html">Leistungen</a></li>
                         <li><a href="galerie.html">Galerie</a></li>
                         <li><a href="kontakt.html">Kontakt</a></li>
