@@ -264,13 +264,22 @@ if (empty($tile_data)) {
     </main>
 
     <section class="map-section">
-        <div class="container">
-            <h2 class="animate-on-scroll">Hier finden Sie uns</h2>
-            <div class="map-container animate-on-scroll">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19488.590502229807!2d8.380192836889648!3d52.57118990000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b9ddd7f45f6d71%3A0x55a8d0f4b5d3af18!2sSteinfeld%2C%20Germany!5e0!3m2!1sen!2sus!4v1721127701744!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+    <div class="container">
+        <h2>Hier finden Sie uns</h2>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2445.678901234!2d8.380192836889648!3d52.57118990000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b9ddd7f45f6d71%3A0x55a8d0f4b5d3af18!2sRouen%20Kamp%201%2C%2049439%20Steinfeld%2C%20Germany!5e0!3m2!1sde!2sde!4v1721127701744!5m2!1sde!2sde" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Standort Fliesen Runnebaum - Rouen Kamp 1, 49439 Steinfeld">
+            </iframe>
         </div>
-    </section>
+    </div>
+</section>
 
     <footer class="footer">
         <div class="container">
