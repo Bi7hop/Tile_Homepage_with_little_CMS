@@ -24,7 +24,7 @@ function setupContactForm() {
         } else {
             name.classList.remove('error');
         }
-        
+
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email.value.trim() || !emailRegex.test(email.value.trim())) {
             email.classList.add('error');
@@ -56,24 +56,37 @@ function setupContactForm() {
         
         return isValid;
     }
-
+    
     const formFields = contactForm.querySelectorAll('.form-control, .form-check-input');
     formFields.forEach(field => {
         field.addEventListener('input', function() {
             if (field.type === 'checkbox') {
-                field.classList.toggle('error', !field.checked);
-            } else if (field.type === 'email') {
+                if (!field.checked) {
+                    field.classList.add('error');
+                } else {
+                    field.classList.remove('error');
+                }
+            } 
+            else if (field.type === 'email') {
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                field.classList.toggle('error', !field.value.trim() || !emailRegex.test(field.value.trim()));
-            } else if (field.hasAttribute('required')) {
-                field.classList.toggle('error', !field.value.trim());
+                if (!field.value.trim() || !emailRegex.test(field.value.trim())) {
+                    field.classList.add('error');
+                } else {
+                    field.classList.remove('error');
+                }
+            } 
+            else {
+                if (!field.value.trim() && field.hasAttribute('required')) {
+                    field.classList.add('error');
+                } else {
+                    field.classList.remove('error');
+                }
             }
         });
     });
 
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
         if (!validateForm()) {
             if (formMessage) {
                 formMessage.textContent = 'Bitte füllen Sie alle Pflichtfelder korrekt aus.';
@@ -81,7 +94,6 @@ function setupContactForm() {
             }
             return;
         }
-        
         if (submitBtn) {
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span class="loading-spinner"></span> Wird gesendet...';
@@ -91,11 +103,16 @@ function setupContactForm() {
         fetch(contactForm.action, {
             method: 'POST',
             body: new FormData(contactForm),
-            headers: { 'Accept': 'application/json' }
+            headers: {
+                'Accept': 'application/json'
+            }
         })
         .then(response => {
-            if (response.ok) return response.json();
-            else throw new Error('Fehler beim Senden der Nachricht');
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Fehler beim Senden der Nachricht');
+            }
         })
         .then(data => {
             if (formMessage) {
@@ -104,7 +121,9 @@ function setupContactForm() {
             }
             contactForm.reset();
             setTimeout(() => {
-                if (formMessage) formMessage.style.display = 'none';
+                if (formMessage) {
+                    formMessage.style.display = 'none';
+                }
             }, 5000);
         })
         .catch(error => {
@@ -121,7 +140,7 @@ function setupContactForm() {
             }
         });
     });
-
+    
     if (!document.querySelector('style#loading-spinner-style')) {
         const styleElement = document.createElement('style');
         styleElement.id = 'loading-spinner-style';
@@ -157,4 +176,70 @@ function setupContactForm() {
         `;
         document.head.appendChild(styleElement);
     }
+}
+
+// Alternative Formular-Verarbeitung (falls Formspree nicht verwendet wird)
+function handleFormSubmissionAlternative(formData) {
+    // Diese Funktion kann für eigene Backend-Integration verwendet werden
+    
+    // Beispiel für eigenes PHP-Backend:
+    /*
+    fetch('contact-handler.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showSuccessMessage(data.message);
+        } else {
+            showErrorMessage(data.message);
+        }
+    })
+    .catch(error => {
+        showErrorMessage('Verbindungsfehler. Bitte versuchen Sie es später erneut.');
+    });
+    */
+}
+
+function showSuccessMessage(message) {
+    const formMessage = document.getElementById('form-message');
+    if (formMessage) {
+        formMessage.textContent = message;
+        formMessage.className = 'form-message success';
+        
+        setTimeout(() => {
+            formMessage.style.display = 'none';
+        }, 5000);
+    }
+}
+
+function showErrorMessage(message) {
+    const formMessage = document.getElementById('form-message');
+    if (formMessage) {
+        formMessage.textContent = message;
+        formMessage.className = 'form-message error';
+    }
+}
+
+function validatePhoneNumber(phone) {
+    const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
+    return phoneRegex.test(phone.replace(/\s/g, ''));
+}
+
+function sanitizeInput(input) {
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        setupContactForm,
+        validateForm: function() {
+            return document.getElementById('contact-form') ? validateForm() : false;
+        },
+        showSuccessMessage,
+        showErrorMessage
+    };
 }

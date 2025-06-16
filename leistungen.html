@@ -5,65 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unsere Leistungen - Fliesen Runnebaum</title>
     <meta name="description" content="Entdecken Sie unsere umfangreichen Fliesenleistungen für Bad, Küche, Wohnraum, Außenbereich und elektrische Heizelemente in Steinfeld und Umgebung.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/img/fliesenrunnebaum_favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/style.css" defer>
+    
+    <link rel="stylesheet" href="assets/css/leistungen.css">
     <link rel="stylesheet" href="assets/css/animations.css">
-    <link rel="stylesheet" href="assets/css/common.css" defer>
-    <link rel="stylesheet" href="assets/css/leistungen.css" defer> 
+    
+    <script src="assets/js/main.js" defer></script>
     <script src="assets/js/animations.js" defer></script>
     <script src="assets/js/preloader.js" defer></script>
-    <style>
-        /* Critical CSS */
-        :root {
-            --primary-color: #2b5797;
-            --secondary-color: #f8f8f8;
-            --accent-color: #ff9900;
-            --text-color: #333;
-            --light-gray: #e0e0e0;
-            --dark-gray: #444;
-            --white: #fff;
-            --box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-        }
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .header {
-            background-color: var(--white);
-            box-shadow: var(--box-shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        .page-header {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 3rem 0;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-    </style>
-    <script src="assets/js/main.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -167,10 +119,10 @@
                     </div>
                 </article>
 
-                <!-- NEUE KATEGORIE: Elektrische Heizelemente -->
+                <!-- Elektrische Heizelemente -->
                 <article class="service-item">
                     <div class="service-image">
-                        <img src="assets/img/gallery/EHeizung.png" alt="Elektrische Fußbodenheizung und Heizelemente" width="500" height="350" loading="lazy" onerror="this.src='assets/img/galerie/EHeizung.png'">
+                        <img src="assets/img/gallery/EHeizung.png" alt="Elektrische Fußbodenheizung und Heizelemente" width="500" height="350" loading="lazy">
                     </div>
                     <div class="service-details">
                         <h2>🔥 Elektrische Heizelemente</h2>
@@ -289,64 +241,5 @@
             </div>
         </div>
     </footer>
-
-    <style>
-        /* Zusätzliche Styles für die Heizelemente-Sektion */
-        .service-highlight {
-            background-color: #f8f9fa;
-            border-left: 4px solid var(--accent-color);
-            padding: 1.5rem;
-            margin-top: 2rem;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .service-highlight h4 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .highlight-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .highlight-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #e9ecef;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .highlight-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .highlight-list li::before {
-            content: "✓";
-            color: #28a745;
-            font-weight: bold;
-            margin-right: 0.5rem;
-            margin-top: 0.2rem;
-        }
-        
-        .highlight-list strong {
-            color: var(--primary-color);
-        }
-        
-        /* Responsive Anpassungen */
-        @media (max-width: 768px) {
-            .service-highlight {
-                margin-top: 1rem;
-                padding: 1rem;
-            }
-            
-            .highlight-list li {
-                font-size: 0.9rem;
-            }
-        }
-    </style>
 </body>
 </html>
