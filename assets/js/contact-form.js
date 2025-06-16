@@ -40,6 +40,10 @@ function setupContactForm() {
             isValid = false;
             message.classList.add('shake');
             setTimeout(() => { message.classList.remove('shake'); }, 500);
+        } else if (message.value.length > 5000) {
+            message.classList.add('error');
+            isValid = false;
+            showMessage('Die Nachricht ist zu lang (max. 5000 Zeichen).', 'error');
         } else {
             message.classList.remove('error');
         }
@@ -88,10 +92,7 @@ function setupContactForm() {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         if (!validateForm()) {
-            if (formMessage) {
-                formMessage.textContent = 'Bitte füllen Sie alle Pflichtfelder korrekt aus.';
-                formMessage.className = 'form-message error';
-            }
+            showMessage('Bitte füllen Sie alle Pflichtfelder korrekt aus.', 'error');
             return;
         }
         if (submitBtn) {
@@ -100,37 +101,43 @@ function setupContactForm() {
             submitBtn.classList.add('btn-loading');
         }
         
+        const formData = new FormData(contactForm);
         fetch(contactForm.action, {
             method: 'POST',
-            body: new FormData(contactForm),
+            body: formData,
             headers: {
                 'Accept': 'application/json'
             }
         })
         .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Fehler beim Senden der Nachricht');
-            }
+            return response.json().then(data => {
+                if (!response.ok) {
+                    throw new Error(data.message || 'Fehler beim Senden der Nachricht');
+                }
+                return data;
+            });
         })
         .then(data => {
-            if (formMessage) {
-                formMessage.textContent = 'Vielen Dank für Ihre Nachricht! Wir werden uns so schnell wie möglich bei Ihnen melden.';
-                formMessage.className = 'form-message success';
+            if (data.success) {
+                showMessage(data.message, 'success');
+                contactForm.reset();
+                contactForm.style.opacity = '0.7';
+                setTimeout(() => {
+                    contactForm.style.opacity = '1';
+                }, 1000);
+                setTimeout(() => {
+                    hideMessage();
+                }, 8000);
+            } else {
+                throw new Error(data.message || 'Unbekannter Fehler');
             }
-            contactForm.reset();
-            setTimeout(() => {
-                if (formMessage) {
-                    formMessage.style.display = 'none';
-                }
-            }, 5000);
         })
         .catch(error => {
-            if (formMessage) {
-                formMessage.textContent = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns telefonisch.';
-                formMessage.className = 'form-message error';
-            }
+            console.error('Kontaktformular-Fehler:', error);
+            showMessage(
+                error.message || 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns telefonisch.', 
+                'error'
+            );
         })
         .finally(() => {
             if (submitBtn) {
@@ -141,9 +148,32 @@ function setupContactForm() {
         });
     });
     
-    if (!document.querySelector('style#loading-spinner-style')) {
+    function showMessage(message, type) {
+        if (formMessage) {
+            formMessage.textContent = message;
+            formMessage.className = `form-message ${type}`;
+            formMessage.style.display = 'block';
+            
+            formMessage.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+        }
+    }
+    
+    function hideMessage() {
+        if (formMessage) {
+            formMessage.style.opacity = '0';
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+                formMessage.style.opacity = '1';
+            }, 500);
+        }
+    }
+    
+    if (!document.querySelector('style#contact-form-styles')) {
         const styleElement = document.createElement('style');
-        styleElement.id = 'loading-spinner-style';
+        styleElement.id = 'contact-form-styles';
         styleElement.textContent = `
             @keyframes spin {
                 0% { transform: rotate(0deg); }
@@ -173,52 +203,25 @@ function setupContactForm() {
                 align-items: center;
                 justify-content: center;
             }
+            .form-message {
+                margin-bottom: 1.5rem;
+                padding: 1rem 1.2rem;
+                border-radius: 6px;
+                font-weight: 500;
+                transition: opacity 0.5s ease;
+            }
+            .form-message.success {
+                background-color: rgba(46, 204, 113, 0.1);
+                border: 2px solid #2ecc71;
+                color: #27ae60;
+            }
+            .form-message.error {
+                background-color: rgba(231, 76, 60, 0.1);
+                border: 2px solid #e74c3c;
+                color: #c0392b;
+            }
         `;
         document.head.appendChild(styleElement);
-    }
-}
-
-// Alternative Formular-Verarbeitung (falls Formspree nicht verwendet wird)
-function handleFormSubmissionAlternative(formData) {
-    // Diese Funktion kann für eigene Backend-Integration verwendet werden
-    
-    // Beispiel für eigenes PHP-Backend:
-    /*
-    fetch('contact-handler.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            showSuccessMessage(data.message);
-        } else {
-            showErrorMessage(data.message);
-        }
-    })
-    .catch(error => {
-        showErrorMessage('Verbindungsfehler. Bitte versuchen Sie es später erneut.');
-    });
-    */
-}
-
-function showSuccessMessage(message) {
-    const formMessage = document.getElementById('form-message');
-    if (formMessage) {
-        formMessage.textContent = message;
-        formMessage.className = 'form-message success';
-        
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 5000);
-    }
-}
-
-function showErrorMessage(message) {
-    const formMessage = document.getElementById('form-message');
-    if (formMessage) {
-        formMessage.textContent = message;
-        formMessage.className = 'form-message error';
     }
 }
 
@@ -231,15 +234,4 @@ function sanitizeInput(input) {
     const div = document.createElement('div');
     div.textContent = input;
     return div.innerHTML;
-}
-
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        setupContactForm,
-        validateForm: function() {
-            return document.getElementById('contact-form') ? validateForm() : false;
-        },
-        showSuccessMessage,
-        showErrorMessage
-    };
 }
