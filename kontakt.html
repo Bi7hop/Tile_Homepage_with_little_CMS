@@ -55,50 +55,53 @@
         <section class="container">
             <div class="contact-grid">
                 <div class="contact-form-container">
-                    <h2>Schreiben Sie uns</h2>
-                    <div class="form-message" id="form-message"></div>
-                    <form id="contact-form" action="https://formspree.io/f/yourformid" method="POST">
-                        <div class="form-group">
-                            <label for="name" class="form-label required-field">Name</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                            <span class="form-error">Bitte geben Sie Ihren Namen ein.</span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email" class="form-label required-field">E-Mail</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                            <span class="form-error">Bitte geben Sie eine gültige E-Mail-Adresse ein.</span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Telefon</label>
-                            <input type="tel" id="phone" name="phone" class="form-control">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject" class="form-label">Betreff</label>
-                            <input type="text" id="subject" name="subject" class="form-control">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="form-label required-field">Nachricht</label>
-                            <textarea id="message" name="message" class="form-control" required placeholder="Beschreiben Sie hier Ihr Fliesenprojekt..."></textarea>
-                            <span class="form-error">Bitte geben Sie Ihre Nachricht ein.</span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <div class="form-check">
-                                <input type="checkbox" id="privacy" name="privacy" class="form-check-input" required>
-                                <label for="privacy" class="form-check-label required-field">
-                                    Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und stimme zu.
-                                </label>
-                                <span class="form-error">Bitte akzeptieren Sie die Datenschutzerklärung.</span>
-                            </div>
-                        </div>
-                        
-                        <button type="submit" class="btn" id="submit-btn">Nachricht senden</button>
-                    </form>
-                </div>
+    <h2>Schreiben Sie uns</h2>
+    <div class="form-message" id="form-message"></div>
+    <form id="contact-form" action="contact-handler.php" method="POST">
+        <!-- Honeypot für Spam-Schutz (versteckt) -->
+        <input type="text" name="website" style="display: none;" tabindex="-1" autocomplete="off">
+        
+        <div class="form-group">
+            <label for="name" class="form-label required-field">Name</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+            <span class="form-error">Bitte geben Sie Ihren Namen ein.</span>
+        </div>
+        
+        <div class="form-group">
+            <label for="email" class="form-label required-field">E-Mail</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+            <span class="form-error">Bitte geben Sie eine gültige E-Mail-Adresse ein.</span>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone" class="form-label">Telefon</label>
+            <input type="tel" id="phone" name="phone" class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="subject" class="form-label">Betreff</label>
+            <input type="text" id="subject" name="subject" class="form-control" placeholder="z.B. Badezimmer-Sanierung, Küche, Terrasse...">
+        </div>
+        
+        <div class="form-group">
+            <label for="message" class="form-label required-field">Nachricht</label>
+            <textarea id="message" name="message" class="form-control" required placeholder="Beschreiben Sie hier Ihr Fliesenprojekt: Welche Räume? Welche Vorstellungen haben Sie? Wann soll es umgesetzt werden?"></textarea>
+            <span class="form-error">Bitte geben Sie Ihre Nachricht ein.</span>
+        </div>
+        
+        <div class="form-group">
+            <div class="form-check">
+                <input type="checkbox" id="privacy" name="privacy" class="form-check-input" required>
+                <label for="privacy" class="form-check-label required-field">
+                    Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu.
+                </label>
+                <span class="form-error">Bitte akzeptieren Sie die Datenschutzerklärung.</span>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn" id="submit-btn">Nachricht senden</button>
+    </form>
+</div>
 
                 <div class="contact-info">
                     <h2>Kontaktinformationen</h2>
@@ -162,21 +165,22 @@
         </section>
 
         <section class="map-section">
-            <div class="container">
-                <h2>Hier finden Sie uns</h2>
-                <div class="map-container">
-                    <iframe 
-                        src="https://maps.google.com/maps?width=100%&height=450&hl=de&q=Rouen+Kamp+1,+49439+Steinfeld,+Deutschland&t=&z=15&ie=UTF8&iwloc=B&output=embed" 
-                        width="100%" 
-                        height="450" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy"
-                        title="Standort Fliesen Runnebaum - Rouen Kamp 1, 49439 Steinfeld">
-                    </iframe>
-                </div>
-            </div>
-        </section>
+    <div class="container">
+        <h2>Hier finden Sie uns</h2>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5553.16103854089!2d8.177531978027698!3d52.57729403198454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b75ac6e19069b7%3A0xf14f911f9dc71425!2sRouen%20Kamp%201%2C%2049439%20Steinfeld%20(Oldenburg)!5e1!3m2!1sde!2sde!4v1750060174545!5m2!1sde!2sde"
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Standort Fliesen Runnebaum - Rouen Kamp 1, 49439 Steinfeld">
+            </iframe>
+        </div>
+    </div>
+</section>
     </main>
 
     <footer class="footer">
