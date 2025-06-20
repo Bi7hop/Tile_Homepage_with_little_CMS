@@ -162,12 +162,12 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <h3>Fliesen Runnebaum</h3>
+                    <h4>Fliesen Runnebaum</h4>
                     <p>Rouen Kamp 1<br>49439 Steinfeld</p>
                     <p>Telefon: 0176 / 10432567<br>E-Mail: info@fliesen-runnebaum.net</p>
                 </div>
                 <div class="footer-nav">
-                    <h3>Navigation</h3>
+                    <h4>Navigation</h4>
                     <ul>
                         <li><a href="index.php">Start</a></li>
                         <li><a href="leistungen.html">Leistungen</a></li>
@@ -176,7 +176,7 @@
                     </ul>
                 </div>
                 <div class="footer-hours">
-                    <h3>Öffnungszeiten</h3>
+                    <h4>Öffnungszeiten</h4>
                     <p>Mo - Fr: 8:00 - 17:00 Uhr<br>Sa: Nach Vereinbarung<br>So: Geschlossen</p>
                 </div>
             </div>
