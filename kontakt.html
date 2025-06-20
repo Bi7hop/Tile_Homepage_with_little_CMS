@@ -32,12 +32,15 @@
         <div class="container">
             <nav class="navbar" role="navigation" aria-label="Hauptnavigation">
                 <a href="index.php" class="logo">Fliesen Runnebaum</a>
-                <button class="menu-toggle" aria-label="Hauptmenü öffnen" aria-expanded="false">
+                <button class="menu-toggle" 
+                        aria-label="Hauptmenü öffnen" 
+                        aria-expanded="false"
+                        aria-controls="nav-menu">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
-                <ul class="nav-menu">
+                <ul class="nav-menu" id="nav-menu">
                     <li class="nav-item"><a href="index.php" class="nav-link">Start</a></li>
                     <li class="nav-item"><a href="leistungen.html" class="nav-link">Leistungen</a></li>
                     <li class="nav-item"><a href="galerie.html" class="nav-link">Galerie</a></li>
@@ -60,80 +63,63 @@
                 <div class="contact-form-container">
                     <h2>Schreiben Sie uns</h2>
                     <div class="form-message" id="form-message" role="alert" aria-live="polite"></div>
+                    
                     <form id="contact-form" action="contact-handler.php" method="POST" novalidate>
                         <!-- Honeypot für Spam-Schutz (versteckt) -->
                         <input type="text" name="website" style="display: none;" tabindex="-1" autocomplete="off" aria-hidden="true">
                         
                         <div class="form-group">
-                            <label for="name" class="form-label required-field">
-                                Ihr Name <span class="sr-only">(Pflichtfeld)</span>
-                            </label>
+                            <label for="name" class="form-label required-field">Ihr Name</label>
                             <input type="text" 
                                    id="name" 
                                    name="name" 
                                    class="form-control" 
                                    required 
                                    aria-required="true"
-                                   aria-describedby="name-error"
                                    autocomplete="name">
-                            <span class="form-error" id="name-error" role="alert">Bitte geben Sie Ihren Namen ein.</span>
+                            <span class="form-error" role="alert">Bitte geben Sie Ihren Namen ein.</span>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email" class="form-label required-field">
-                                E-Mail-Adresse <span class="sr-only">(Pflichtfeld)</span>
-                            </label>
+                            <label for="email" class="form-label required-field">E-Mail-Adresse</label>
                             <input type="email" 
                                    id="email" 
                                    name="email" 
                                    class="form-control" 
                                    required 
                                    aria-required="true"
-                                   aria-describedby="email-error"
                                    autocomplete="email">
-                            <span class="form-error" id="email-error" role="alert">Bitte geben Sie eine gültige E-Mail-Adresse ein.</span>
+                            <span class="form-error" role="alert">Bitte geben Sie eine gültige E-Mail-Adresse ein.</span>
                         </div>
                         
                         <div class="form-group">
-                            <label for="phone" class="form-label">
-                                Telefonnummer <span class="sr-only">(optional)</span>
-                            </label>
+                            <label for="phone" class="form-label">Telefonnummer</label>
                             <input type="tel" 
                                    id="phone" 
                                    name="phone" 
                                    class="form-control"
-                                   aria-describedby="phone-hint"
                                    autocomplete="tel">
-                            <small id="phone-hint" class="form-hint">Optional - für Rückfragen</small>
                         </div>
                         
                         <div class="form-group">
-                            <label for="subject" class="form-label">
-                                Betreff <span class="sr-only">(optional)</span>
-                            </label>
+                            <label for="subject" class="form-label">Betreff</label>
                             <input type="text" 
                                    id="subject" 
                                    name="subject" 
                                    class="form-control" 
-                                   placeholder="z.B. Badezimmer-Sanierung, Küche, Terrasse..."
-                                   aria-describedby="subject-hint">
-                            <small id="subject-hint" class="form-hint">Beschreiben Sie kurz Ihr Anliegen</small>
+                                   placeholder="z.B. Badezimmer-Sanierung, Küche, Terrasse...">
                         </div>
                         
                         <div class="form-group">
-                            <label for="message" class="form-label required-field">
-                                Ihre Nachricht <span class="sr-only">(Pflichtfeld)</span>
-                            </label>
+                            <label for="message" class="form-label required-field">Ihre Nachricht</label>
                             <textarea id="message" 
                                       name="message" 
                                       class="form-control" 
                                       required 
                                       aria-required="true"
-                                      aria-describedby="message-error message-hint"
                                       placeholder="Beschreiben Sie hier Ihr Fliesenprojekt: Welche Räume? Welche Vorstellungen haben Sie? Wann soll es umgesetzt werden?"
                                       rows="6"></textarea>
-                            <small id="message-hint" class="form-hint">Bitte beschreiben Sie Ihr Fliesenprojekt so detailliert wie möglich</small>
-                            <span class="form-error" id="message-error" role="alert">Bitte geben Sie Ihre Nachricht ein.</span>
+                            <span class="form-error" role="alert">Bitte geben Sie Ihre Nachricht ein.</span>
                         </div>
                         
                         <div class="form-group">
@@ -143,20 +129,17 @@
                                        name="privacy" 
                                        class="form-check-input" 
                                        required 
-                                       aria-required="true"
-                                       aria-describedby="privacy-error">
+                                       aria-required="true">
                                 <label for="privacy" class="form-check-label required-field">
-                                    Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener" aria-describedby="datenschutz-link-hint">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. <span class="sr-only">(Pflichtfeld)</span>
+                                    Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu.
                                 </label>
-                                <small id="datenschutz-link-hint" class="sr-only">Link öffnet in neuem Fenster</small>
-                                <span class="form-error" id="privacy-error" role="alert">Bitte akzeptieren Sie die Datenschutzerklärung.</span>
+                                <span class="form-error" role="alert">Bitte akzeptieren Sie die Datenschutzerklärung.</span>
                             </div>
                         </div>
                         
-                        <button type="submit" class="btn" id="submit-btn" aria-describedby="submit-hint">
+                        <button type="submit" class="btn" id="submit-btn">
                             Nachricht senden
                         </button>
-                        <small id="submit-hint" class="form-hint">Ihre Nachricht wird verschlüsselt übertragen</small>
                     </form>
                 </div>
 
@@ -233,13 +216,8 @@
                         allowfullscreen="" 
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
-                        title="Standortkarte: Fliesen Runnebaum, Rouen Kamp 1, 49439 Steinfeld"
-                        aria-describedby="map-description">
+                        title="Standortkarte: Fliesen Runnebaum, Rouen Kamp 1, 49439 Steinfeld">
                     </iframe>
-                    <p id="map-description" class="sr-only">
-                        Interaktive Karte mit dem Standort von Fliesen Runnebaum in Steinfeld. 
-                        Adresse: Rouen Kamp 1, 49439 Steinfeld.
-                    </p>
                 </div>
             </div>
         </section>
