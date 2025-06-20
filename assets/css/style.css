@@ -489,3 +489,21 @@ a:not(.btn):not(.logo):not(.nav-link):hover {
         scroll-behavior: auto !important;
     }
 }
+
+.footer h4 {
+    color: var(--white);
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+.footer h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--accent-color);
+}
