@@ -197,3 +197,33 @@
         min-height: 44px;
     }
 }
+
+@media (max-width: 320px) {
+    .modal {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        max-height: 100vh;
+    }
+    
+    .cookie-option label strong {
+        font-size: 0.85rem;
+    }
+    
+    .cookie-option label p {
+        font-size: 0.75rem;
+    }
+}
+
+/* Bessere Fokus-Indikatoren */
+.modal button:focus,
+.modal input:focus {
+    outline: 2px solid var(--primary-color, #126e82);
+    outline-offset: 2px;
+}
+
+/* Smooth Scroll für Modal */
+.modal {
+    scroll-behavior: smooth;
+}
