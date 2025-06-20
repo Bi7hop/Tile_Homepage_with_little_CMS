@@ -9,10 +9,12 @@ function setupCookieConsent() {
     const cookieRejectAll = document.getElementById('cookie-reject-all');
     const cookieSave = document.getElementById('cookie-save');
     
-    // Wenn keine Cookie-Präferenz gesetzt ist, Cookie-Modal anzeigen
-    if (!localStorage.getItem('cookieConsent')) {
-        cookieModal.classList.add('active');
-        toggleBodyScroll(true); // Body Scroll sperren
+    if (!localStorage.getItem('cookieConsent') && cookieModal) {
+        // Kurze Verzögerung für bessere UX
+        setTimeout(() => {
+            cookieModal.classList.add('active');
+            toggleBodyScroll(true);
+        }, 1000); 
     }
     
     // Modal schließen ohne Einstellungen zu speichern
@@ -286,3 +288,33 @@ if (localStorage.getItem('debug') === 'true') {
         });
     };
 }
+function applyCookieSettings() {
+    const consent = localStorage.getItem('cookieConsent');
+    if (!consent) return;
+    
+    const settings = JSON.parse(consent);
+    
+    if (settings.analytics) {
+        console.log('Analytics-Cookies aktiviert');
+        // Hier würden Sie Google Analytics oder ähnliches laden:
+        // loadGoogleAnalytics();
+    } else {
+        console.log('Analytics-Cookies deaktiviert');
+        // Hier würden Sie Analytics deaktivieren
+    }
+    
+    // Marketing-Cookies
+    if (settings.marketing) {
+        console.log('Marketing-Cookies aktiviert');
+        // Hier würden Sie Marketing-Tools laden:
+        // loadFacebookPixel(), loadGoogleAds(), etc.
+    } else {
+        console.log('Marketing-Cookies deaktiviert');
+    }
+}
+
+// Einstellungen beim Laden der Seite anwenden
+document.addEventListener('DOMContentLoaded', function() {
+    applyCookieSettings();
+    setupCookieConsent();
+});
