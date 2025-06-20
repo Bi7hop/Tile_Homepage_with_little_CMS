@@ -357,3 +357,135 @@ img {
 .mb-5 {
     margin-bottom: 3rem;
 }
+
+/* ========================================
+   BARRIEREFREIHEIT & ACCESSIBILITY
+   ======================================== */
+
+/* Screenreader-only Text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Skip-Link für Tastatur-Navigation */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 8px 12px;
+    text-decoration: none;
+    z-index: 1000;
+    border-radius: 0 0 4px 4px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Verbesserte Fokus-Indikatoren */
+*:focus {
+    outline: 2px solid var(--primary-color) !important;
+    outline-offset: 2px !important;
+}
+
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+a:focus {
+    outline: 3px solid var(--primary-color) !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 1px var(--white) !important;
+}
+
+/* Bessere Touch-Targets */
+.btn {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Touch-optimierte Navigation */
+.nav-link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+}
+
+/* Bessere Link-Erkennbarkeit */
+a:not(.btn):not(.logo):not(.nav-link) {
+    text-decoration: underline;
+}
+
+a:not(.btn):not(.logo):not(.nav-link):hover {
+    text-decoration: none;
+}
+
+/* Formular-Accessibility */
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(18, 110, 130, 0.2);
+}
+
+.form-error {
+    color: var(--error-color, #e74c3c);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+/* Verbesserte Checkbox/Radio Accessibility */
+.form-check-input:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Responsive Touch-Targets für Mobile */
+@media (max-width: 768px) {
+    .btn,
+    .nav-link,
+    .menu-toggle {
+        min-height: 48px;
+        min-width: 48px;
+    }
+    
+    .form-control {
+        min-height: 48px;
+        font-size: 16px; /* Verhindert Zoom auf iOS */
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .btn {
+        border: 2px solid currentColor;
+    }
+    
+    *:focus {
+        outline: 3px solid currentColor !important;
+        outline-offset: 2px !important;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
