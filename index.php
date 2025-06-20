@@ -123,7 +123,7 @@
                         <a href="leistungen.html" class="btn">Unsere Leistungen</a>
                     </div>
                     <div class="about-image animate-on-scroll">
-                        <img src="assets/img/olli.png" alt="Fliesenleger bei der Arbeit" width="600" height="400" loading="lazy">
+                        <img src="assets/img/olli.png" alt="Oliver Runnebaum verlegt professionell Fliesen in einem modernen Badezimmer" width="600" height="400" loading="lazy">
                     </div>
                 </div>
             </div>
