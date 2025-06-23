@@ -43,10 +43,8 @@ if (empty($tile_data)) {
     <title>Fliese des Monats - <?php echo htmlspecialchars($tile_data['title']); ?> | Fliesen Runnebaum</title>
     <meta name="description" content="<?php echo htmlspecialchars($tile_data['description']); ?> Zum Sonderpreis von <?php echo htmlspecialchars($tile_data['new_price']); ?> €/m².">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/img/fliesenrunnebaum_favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/fonts.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/animations.css">
     <link rel="stylesheet" href="assets/css/fliese-des-monats.css">
