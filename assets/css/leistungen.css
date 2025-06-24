@@ -763,3 +763,41 @@ img {
         font-size: 0.9rem;
     }
 }
+        .service-image {
+            position: relative;
+        }
+        
+        .service-reference-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-reference-badge.real {
+            background: rgba(46, 204, 113, 0.95);
+            color: white;
+        }
+        
+        .service-reference-badge.example {
+            background: rgba(52, 152, 219, 0.95);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .service-reference-badge {
+                font-size: 0.75rem;
+                padding: 4px 8px;
+                top: 8px;
+                right: 8px;
+            }
+        }
