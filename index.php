@@ -168,7 +168,7 @@
                     <p>Telefon: 0176 / 10432567<br>E-Mail: info@fliesen-runnebaum.net</p>
                 </div>
                 <div class="footer-nav">
-                    <h4>Navigation</h4>
+                    <h3>Navigation</h3>
                     <ul>
                         <li><a href="index.php">Start</a></li>
                         <li><a href="leistungen.html">Leistungen</a></li>
@@ -177,7 +177,7 @@
                     </ul>
                 </div>
                 <div class="footer-hours">
-                    <h4>Öffnungszeiten</h4>
+                    <h3>Öffnungszeiten</h3>
                     <p>Mo - Fr: 8:00 - 17:00 Uhr<br>Sa: Nach Vereinbarung<br>So: Geschlossen</p>
                 </div>
             </div>
