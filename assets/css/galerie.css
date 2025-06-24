@@ -677,3 +677,83 @@ body {
     background-color: var(--primary-color);
     transform: translateY(-5px);
 }
+
+.gallery-item {
+    position: relative;
+}
+
+.reference-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.reference-badge.real {
+    background: rgba(46, 204, 113, 0.9);
+    color: white;
+}
+
+.reference-badge.example {
+    background: rgba(52, 152, 219, 0.9);
+    color: white;
+}
+
+.lightbox-project-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.lightbox-project-badge.real {
+    background: rgba(46, 204, 113, 0.9);
+    color: white;
+    border-color: rgba(46, 204, 113, 0.3);
+}
+
+.lightbox-project-badge.example {
+    background: rgba(52, 152, 219, 0.9);
+    color: white;
+    border-color: rgba(52, 152, 219, 0.3);
+}
+
+.lightbox-project-badge .badge-icon {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+.lightbox-caption h3 {
+    color: white;
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+}
+
+.lightbox-caption p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .reference-badge {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+        top: 6px;
+        right: 6px;
+    }
+}
