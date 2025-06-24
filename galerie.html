@@ -12,6 +12,7 @@
     
     <script src="assets/js/main.js" defer></script>
     <script src="assets/js/gallery.js" defer></script>
+    <script src="assets/js/enhanced-gallery.js" defer></script>
     <script src="assets/js/animations.js" defer></script>
     <script src="assets/js/preloader.js" defer></script>
 </head>
@@ -37,8 +38,8 @@
 
     <section class="page-header">
         <div class="container">
-            <h1>Unsere Galerie</h1>
-            <p>Einblicke in unsere Fliesenarbeiten und Referenzprojekte</p>
+            <h1>Projekte & Referenzen</h1>
+            <p>Einblicke in unsere Fliesenarbeiten und Inspirationen für Ihr Projekt</p>
         </div>
     </section>
 
@@ -52,31 +53,42 @@
                 <button class="filter-btn" data-filter="aussenbereich">Außenbereich</button>
                 <button class="filter-btn" data-filter="heizelemente">Elektrische Heizelemente</button>
             </div>
+            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; border-left: 4px solid #126e82;">
+                <p style="margin: 0; color: #666; font-size: 0.9rem;">
+                    <strong>Hinweis:</strong> 
+                    <span style="color: #2ecc71;">●</span> <strong>Eigene Projekte</strong> - Realisierte Arbeiten von Fliesen Runnebaum | 
+                    <span style="color: #3498db;">●</span> <strong>Referenz-Beispiele</strong> - Darstellung möglicher Gestaltungen
+                </p>
+            </div>
 
             <div class="gallery-grid" id="gallery">
                 <!-- Badezimmer -->
-                <div class="gallery-item" data-category="bad">
+                <div class="gallery-item" data-category="bad" data-project-type="example">
+                    <span class="reference-badge example">Referenz-Beispiel</span>
                     <img src="assets/img/gallery/bad_beton.png" alt="Modernes Badezimmer mit großformatigen Fliesen" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Modernes Badezimmer</h3>
                         <p>Großformatige Fliesen in Betonoptik</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="bad">
+                <div class="gallery-item" data-category="bad" data-project-type="example">
+                    <span class="reference-badge example">Referenz-Beispiel</span>
                     <img src="assets/img/gallery/bad_mosaik.png" alt="Elegantes Badezimmer mit Mosaikfliesen" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Elegantes Badezimmer</h3>
                         <p>Mosaikfliesen in der Dusche</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="bad">
+                <div class="gallery-item" data-category="bad" data-project-type="example">
+                    <span class="reference-badge example">Referenz-Beispiel</span>
                     <img src="assets/img/gallery/bad_natur.png" alt="Badezimmer mit Natursteinfliesen" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Naturstein-Bad</h3>
                         <p>Warme Erdtöne für Wohlfühlatmosphäre</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="bad">
+                <div class="gallery-item" data-category="bad" data-project-type="example">
+                    <span class="reference-badge example">Referenz-Beispiel</span>
                     <img src="assets/img/gallery/bad_muster.png" alt="Modernes Gäste-WC mit Designfliesen" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Modernes Gäste-WC</h3>
@@ -85,21 +97,24 @@
                 </div>
 
                 <!-- Küche -->
-                <div class="gallery-item" data-category="kueche">
+                <div class="gallery-item" data-category="kueche" data-project-type="example">
+                    <span class="reference-badge example">Referenz-Beispiel</span>
                     <img src="assets/img/gallery/kueche1.png" alt="Moderne Küche mit Fliesenspiegel" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Moderne Küche</h3>
                         <p>Fliesenspiegel in Metrooptik</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="kueche">
+                <div class="gallery-item" data-category="kueche" data-project-type="example">
+                    <span class="reference-badge example">Referenz-Beispiel</span>
                     <img src="assets/img/gallery/kueche2.png" alt="Landhaus-Küche mit Terrakotta-Fliesen" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Landhaus-Küche</h3>
                         <p>Terrakotta-Fliesen für rustikale Optik</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="kueche">
+                <div class="gallery-item" data-category="kueche" data-project-type="example">
+                    <span class="reference-badge example">Referenz-Beispiel</span>
                     <img src="assets/img/gallery/kueche3.png" alt="Offene Küche mit Bodenfliesen in Holzoptik" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Offene Küche</h3>
@@ -108,21 +123,24 @@
                 </div>
 
                 <!-- Wohnbereich -->
-                <div class="gallery-item" data-category="wohnbereich">
+                <div class="gallery-item" data-category="wohnbereich" data-project-type="example">
+                    <span class="reference-badge example">Referenz-Beispiel</span>
                     <img src="assets/img/gallery/wohnbereich1.png" alt="Wohnzimmer mit großformatigen Bodenfliesen" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Modernes Wohnzimmer</h3>
                         <p>Großformatige Bodenfliesen für offenen Wohnraum</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="wohnbereich">
+                <div class="gallery-item" data-category="wohnbereich" data-project-type="example">
+                    <span class="reference-badge example">Referenz-Beispiel</span>
                     <img src="assets/img/gallery/wohnbereich2.png" alt="Esszimmer mit Keramikfliesen" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Elegantes Esszimmer</h3>
                         <p>Keramikfliesen mit dezenter Musterung</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="wohnbereich">
+                <div class="gallery-item" data-category="wohnbereich" data-project-type="example">
+                    <span class="reference-badge example">Referenz-Beispiel</span>
                     <img src="assets/img/gallery/wohnbereich3.png" alt="Flur mit Fliesenboden" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Moderner Flur</h3>
@@ -131,35 +149,41 @@
                 </div>
 
                 <!-- Außenbereich -->
-                <div class="gallery-item" data-category="aussenbereich">
+                <div class="gallery-item" data-category="aussenbereich" data-project-type="example">
+                    <span class="reference-badge example">Referenz-Beispiel</span>
                     <img src="assets/img/gallery/terrasse1.png" alt="Moderne Terrasse mit Außenfliesen" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Moderne Terrasse</h3>
                         <p>Frostsichere Außenfliesen in Betonoptik</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="aussenbereich">
+                <div class="gallery-item" data-category="aussenbereich" data-project-type="example">
+                    <span class="reference-badge example">Referenz-Beispiel</span>
                     <img src="assets/img/gallery/terrasse2.png" alt="Balkon mit rutschfesten Fliesen" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Balkon</h3>
                         <p>Rutschfeste Fliesen für mehr Sicherheit</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="aussenbereich">
+                <div class="gallery-item" data-category="aussenbereich" data-project-type="example">
+                    <span class="reference-badge example">Referenz-Beispiel</span>
                     <img src="assets/img/gallery/terrasse3.png" alt="Gartenweg mit Natursteinfliesen" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Gartenweg</h3>
                         <p>Natursteinfliesen für den Außenbereich</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="aussenbereich">
+                <!-- REALE POOLPROJEKTE -->
+                <div class="gallery-item" data-category="aussenbereich" data-project-type="real">
+                    <span class="reference-badge real">Eigenes Projekt</span>
                     <img src="assets/img/gallery/Poolabdeckung.png" alt="Poolumrandung mit rutschfesten Fliesen" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Poolumrandung</h3>
                         <p>Rutschfeste und wasserfeste Fliesen für Sicherheit am Pool</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="aussenbereich">
+                <div class="gallery-item" data-category="aussenbereich" data-project-type="real">
+                    <span class="reference-badge real">Eigenes Projekt</span>
                     <img src="assets/img/gallery/Terrassenbelag.png" alt="Großformatige Poolfliesen in heller Optik" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Moderne Poolgestaltung</h3>
@@ -167,8 +191,9 @@
                     </div>
                 </div>
 
-                <!-- Elektrische Heizelemente -->
-                <div class="gallery-item" data-category="heizelemente">
+                <!-- HEIZUNGSPROJEKT -->
+                <div class="gallery-item" data-category="heizelemente" data-project-type="real">
+                    <span class="reference-badge real">Eigenes Projekt</span>
                     <img src="assets/img/gallery/EHeizung.png" alt="Installation elektrischer Fußbodenheizung" loading="lazy">
                     <div class="gallery-item-caption">
                         <h3>Elektrische Fußbodenheizung</h3>
@@ -178,7 +203,6 @@
             </div>
         </section>
 
-        <!-- Lightbox -->
         <div class="lightbox" id="lightbox">
             <span class="lightbox-close" id="lightbox-close">&times;</span>
             <div class="lightbox-content">
@@ -188,7 +212,8 @@
                     <span class="lightbox-next" id="lightbox-next">&#10095;</span>
                 </div>
             </div>
-            <div class="lightbox-caption" id="lightbox-caption"></div>
+            <div class="lightbox-caption" id="lightbox-caption">
+            </div>
         </div>
 
         <section class="cta-section">
